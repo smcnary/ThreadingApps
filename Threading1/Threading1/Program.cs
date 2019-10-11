@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Threading1
+namespace Threading
 {
 	class ThreadTest
 	{
@@ -13,23 +13,21 @@ namespace Threading1
 
 		static void Main(string[] args)
 		{
-			//Separate thread
-			new Thread(Go).Start();
-			//Main thread;
-			Go();
+			Thread t = new Thread(Go);
+			t.Start();
+			t.Join();
+			Console.WriteLine("Thread t has ended!");
+			Console.ReadLine();
 		}
 
 		static void Go()
 		{
-			if (!_done)
+			for (int i = 0; i < 1000; i++)
 			{
-				_done = true;
-				Console.WriteLine("Done");
-
-				
-
-				Console.ReadLine();
+				Console.WriteLine("y");
 			}
+
+			Console.ReadLine();
 		}
 	}
 }
